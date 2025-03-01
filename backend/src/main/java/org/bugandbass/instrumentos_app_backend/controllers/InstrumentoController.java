@@ -25,7 +25,7 @@ public class InstrumentoController {
         out.write("HTTP/1.1 200 OK\r\n");
         out.write("Content-Type: application/json\r\n");
         out.write("Access-Control-Allow-Origin: http://localhost:5173\r\n");
-        out.write("Access-Control-Allow-Methods: GET\r\n");
+        out.write("Access-Control-Allow-Methods: GET,POST,OPTIONS\r\n");
         out.write("Access-Control-Allow-Headers: Content-Type\r\n");
         out.write("\r\n");
         out.write(json);

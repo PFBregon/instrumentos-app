@@ -26,6 +26,8 @@ public class HomeController {
                 System.out.println("Solicitud recibida: " + requestLine);
     
                 if (requestLine == null) continue;
+
+                if (requestLine.startsWith("GET /options")) continue;
                 
                 if (requestLine.startsWith("GET /piano/notas")) {
                     instrumentoController.responderSonido(out);
