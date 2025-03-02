@@ -8,6 +8,7 @@ dist/
 # Configuración local de editores
 .vscode/
 .idea/
+.qodo/
 *.swp
 
 # Archivos de logs y caché

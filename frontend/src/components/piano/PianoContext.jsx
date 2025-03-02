@@ -28,11 +28,10 @@ useEffect(() => {
         setRecording(false);
     };
     const handleNotePlay = (nota) => {
-        if (recording && startTime) {
-            const timestamp = (Date.now() - startTime) / 1000;
-            setNotas((prev) => [...prev, { nota, timestamp }]);
-        }
+        setNotas(prevNotas => [...prevNotas, { nota, timestamp: Date.now() }]);
+        console.log("🎵 Nota agregada:", { nota, timestamp: Date.now() });
     };
+    
     return (
         <PianoContext.Provider
         value={{ recording, startRecording, stopRecording, handleNotePlay, time, notas }}>
