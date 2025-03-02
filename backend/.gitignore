@@ -5,7 +5,6 @@
 
 # Ignorar directorios generados por Maven
 target/
-.vscode/
 out/
 
 # Ignorar archivos de configuración local
