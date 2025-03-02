@@ -2,8 +2,7 @@ import { useState } from "react";
 import ListaGrabaciones from "../components/reproductor/ListaGrabaciones";
 import Reproductor from "../components/reproductor/Reproductor";
 import musicIcon from "../assets/img/reproductor/music-icon.svg";
-
-
+import HomeIcon from "../components/homeicon";
 const Grabaciones = () => {
     const grabaciones = [
         {
@@ -52,28 +51,21 @@ const Grabaciones = () => {
             img: musicIcon
         },
     ];
-
     const [currentIndex, setCurrentIndex] = useState(0);
-
     return (
         <>
-
             <div className="flex flex-col items-center justify-center h-screen relative">
                 <div className="background-vector">
                     {/* El contenido de fondo, puede ser un div con un fondo o un SVG */}
                 </div>
-
                 <div className="relative z-10
                 flex flex-col items-center justify-center h-screen">
+                    <HomeIcon />
                     <ListaGrabaciones grabaciones={grabaciones} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
                     <Reproductor className="mt-auto" grabaciones={grabaciones} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
                 </div>
             </div>
-       
-
         </>
-
     )
 }
-
 export default Grabaciones;

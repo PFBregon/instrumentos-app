@@ -28,9 +28,9 @@ const Cronometro = ({ recording }) => {
     };
 
     return (
-        <div>
-            ⏱️{formatTime(time)}
-        </div>
+        <div className='text-4xl font-anton-sc text-white'>
+        {formatTime(time)}
+    </div>
     );
 };
 
