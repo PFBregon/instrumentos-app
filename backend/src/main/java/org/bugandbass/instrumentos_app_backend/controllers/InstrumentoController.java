@@ -14,7 +14,7 @@ public class InstrumentoController {
     public InstrumentoController(){}
 
     public String obtenerSonido(){
-        Piano piano = new Piano("Piano", "Cuerda");
+        Piano piano = Piano.getInstance();
         List<Nota> tocarInstrumento = piano.tocarInstrumento();
         String json = new Gson().toJson(tocarInstrumento);
         return json;

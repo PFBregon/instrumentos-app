@@ -1,20 +1,21 @@
 package org.bugandbass.instrumentos_app_backend.models;
 
 public class Nota {
-    private int idNota;
+    private int idNota=1;
     private String nombre;
     private String tecla;
     
-
-    // Constructor
     public Nota(int idNota,String tecla, String nombre) {
-        this.idNota = idNota;
+        this.idNota = idNota++;
         this.tecla = tecla;
         this.nombre = nombre;
         
     }
 
-    // Getters
+    public Nota(String string, String string2) {
+    
+    }
+
     public int getIdNota() {
         return idNota;
     }
@@ -25,6 +26,10 @@ public class Nota {
 
     public String getTecla() {
         return tecla;
+    }
+
+    public String getNota() {
+        throw new UnsupportedOperationException("Unimplemented method 'getNota'");
     }
     
 }

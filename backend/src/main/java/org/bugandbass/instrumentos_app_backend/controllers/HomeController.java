@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
 public class HomeController {
     
     public HomeController(ServerSocket serverSocket) throws Exception {
@@ -15,7 +16,7 @@ public class HomeController {
 
     public void run(ServerSocket serverSocket) throws Exception {
         InstrumentoController instrumentoController = new InstrumentoController();
-        //Grabacion grabacion=new Grabacion();
+        GrabacionController grabacionController=new GrabacionController();
         while (true) {
             Socket clientSocket = serverSocket.accept();
             try (
@@ -33,13 +34,9 @@ public class HomeController {
                     instrumentoController.responderSonido(out);
                     continue;
                 }
-                if (requestLine.startsWith("GET /grabaciones")) {
+                if (requestLine.startsWith("GET /grabaciones")|| requestLine.startsWith("POST /grabaciones")) {
+                    grabacionController.responderGrabacion(requestLine, out, in);
                     continue;
-                } 
-                if (requestLine.startsWith("GET /salir")) {
-                    out.write("HTTP/1.1 200 OK\r\n\r\nServidor finalizando");
-                    out.flush();
-                    break;
                 }
                 out.write("HTTP/1.1 404 Not Found\r\n\r\n");
                 out.flush();

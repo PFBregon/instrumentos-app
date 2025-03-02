@@ -7,16 +7,23 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.List;
 
 
 public class PianoTest {
-    Piano piano;
+     private Piano piano;
+
     @BeforeEach
     void setUp() {
-        piano = new Piano("Piano","Cuerda") {};
-        
+        piano = Piano.getInstance();
+    }
+
+    @Test
+    void testSingleton() {
+        Piano piano2 = Piano.getInstance();
+        assertSame(piano, piano2, "Debe ser la misma instancia");
     }
     @Test
     void testInstanciarPiano() {
@@ -57,10 +64,6 @@ public class PianoTest {
         assertThat(tocarInstrumento.get(11).getNombre(), is("B4"));
         assertThat(tocarInstrumento.get(12).getTecla(), is("Ñ"));
         assertThat(tocarInstrumento.get(12).getNombre(), is("C5"));
-
-
-
-
     }
 
 }
