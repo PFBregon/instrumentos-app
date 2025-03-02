@@ -8,3 +8,5 @@ Thumbs.db
 # Ignorar dependencias de Node y Maven
 frontend/node_modules/
 backend/target/
+
+.vscode/
