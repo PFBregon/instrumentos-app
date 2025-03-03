@@ -2,12 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>App</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+<style>
+  body {        
+    min-height: 100dvh;     
+    background: #0f0c29;  /* fallback para navegadores antiguos */
+    background-attachment: fixed; 
+    background: -webkit-linear-gradient(to top, #292929, #616161, #a3a3a3);  
+    background: linear-gradient(to top, #292929, #616161, #a3a3a3);
+  }
+</style>
