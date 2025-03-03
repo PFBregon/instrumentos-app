@@ -25,20 +25,13 @@ const Home = () => {
     ]
 
     return (
-
-        // es lo mismo que envolver los elementos html en <></>
-        // ya que react necesita un "contenedor padre" para devolver mas de un elemento html
         <React.Fragment>
-
             <Header/>
             <BannerSection/>
             <main >
                 <ListaInstrumentos instrumentos={instrumentos} />
             </main>
             <Footer/>
-
-           
-
         </React.Fragment>
 
     )

@@ -4,14 +4,12 @@ import { FaVolumeUp, FaVolumeDown, FaVolumeMute } from "react-icons/fa";
 const VolumeControl = ({ volume, setVolume }) => {
   const [showVolumeControl, setShowVolumeControl] = useState(false);
 
-  // Alternar visibilidad de la barra de volumen
   const toggleVolumeControl = () => {
     setShowVolumeControl((prev) => !prev);
   };
 
   return (
     <div className="relative flex justify-center ">
-      {/* Botón de volumen */}
       <button onClick={toggleVolumeControl} className="w-8 h-8">
         {volume === 0 ? (
           <FaVolumeMute className="text-white w-6 h-6" />
@@ -22,7 +20,6 @@ const VolumeControl = ({ volume, setVolume }) => {
         )}
       </button>
 
-      {/* Barra de volumen flotante */}
       {showVolumeControl && (
         <div className="flex absolute left-[-133px] bottom-1 p-2 w-32 rounded-lg shadow-lg">
           <input
@@ -40,7 +37,6 @@ const VolumeControl = ({ volume, setVolume }) => {
         </div>
       )}
 
-      {/* Estilos personalizados para el input range */}
       <style jsx>{`
         .custom-slider {
           -webkit-appearance: none;

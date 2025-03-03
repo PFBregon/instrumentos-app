@@ -37,9 +37,8 @@ public class HomeController {
                 out.write("HTTP/1.1 404 Not Found\r\n\r\n");
                 out.flush();
             } finally {
-                clientSocket.close(); // Cerrar el socket del cliente aquí
+                clientSocket.close();
             }
         }
-        // serverSocket.close(); // Mover esto aquí si quieres cerrar el servidor completamente
     }
 }

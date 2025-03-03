@@ -31,7 +31,6 @@ const Piano = () => {
 
     const [teclasActivas, setTeclasActivas] = useState({});
 
-    // Cargar datos del backend
     useEffect(() => {
       const cargarSonidos = async () => {
           try {
@@ -49,7 +48,6 @@ const Piano = () => {
       cargarSonidos();
   }, []);
 
-  // Manejar la pulsación de teclas
   const tocarTecla = (event) => {
       const teclaPresionada = event.key.toUpperCase();
       const notaEncontrada = teclasPiano.find((nota) => nota.tecla === teclaPresionada);
@@ -61,13 +59,11 @@ const Piano = () => {
       }
   };
 
-  // Manejar la liberación de teclas
   const soltarTecla = (event) => {
       const teclaLiberada = event.key.toUpperCase();
       setTeclasActivas((prev) => ({ ...prev, [teclaLiberada]: false }));
   };
 
-  // Agregar y remover event listeners
   useEffect(() => {
       window.addEventListener("keydown", tocarTecla);
       window.addEventListener("keyup", soltarTecla);
