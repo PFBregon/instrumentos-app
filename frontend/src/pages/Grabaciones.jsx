@@ -56,7 +56,6 @@ const Grabaciones = () => {
         <>
             <div className="flex flex-col items-center justify-center h-screen relative">
                 <div className="background-vector">
-                    {/* El contenido de fondo, puede ser un div con un fondo o un SVG */}
                 </div>
                 <div className="relative z-10
                 flex flex-col items-center justify-center h-screen">
