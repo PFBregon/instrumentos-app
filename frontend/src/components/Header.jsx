@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Header = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -30,7 +31,7 @@ const Header = () => {
         "absolute top-0"} left-0 right-0 z-50 w-full text-white 
         flex items-center justify-between
         p-6 transition-all duration-300 ease-in-out`}>
-            <p className="font-advent-pro">LOGO3DCELIA</p>
+            <Logo />
             <nav>
                 <span className="font-advent-pro uppercase text-lg hover-underline"> 
                     <Link to="/grabaciones">Grabaciones</Link>
