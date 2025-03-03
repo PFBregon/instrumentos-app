@@ -90,6 +90,16 @@ El frontend se comunica con el backend a través de llamadas HTTP utilizando **f
 ## 📜 Licencia
 Este proyecto está bajo la **Licencia MIT**.
 
+## 📂 Documentación
+- [Figma](https://www.figma.com/design/ALbWWPaN0ZJjH84Z3uloeS/InstrumentosApp?node-id=0-1&t=OfQCWYtqUn0J6e9J-1)
+- [Jira](https://emmalanza.atlassian.net/jira/software/projects/EQ2IM/boards/4/backlog?atlOrigin=eyJwIjoiaiIsImkiOiIyNjBkYzJjOGFhYWY0NzllOTljMTQxZGZhMTE2ODIzNiJ9&cloudId=07b08350-4067-4a33-8587-933e2f18950c&epics=visible)
+- [Confluence](https://emmalanza.atlassian.net/wiki/spaces/EQ2IM/pages/196609/Estrategia+de+Ramas+en+Git?atlOrigin=eyJpIjoiZTk4MGY3Y2VjYWI1NGYyYjg1ZTRjYWU3ZTE3Y2Y3MTUiLCJwIjoiaiJ9)
+- [Diagrama de clases](https://drive.google.com/file/d/1y7p86_KyZyZbVvd4TKHxRs5PaO8v5l1Y/view?usp=sharing)
+- [Userflow](https://drive.google.com/file/d/19_nNBklOnWrQqxUZcisW3BeR6jQziKml/view?usp=sharing)
+- [Canva](https://www.canva.com/design/DAGger76quo/iLLJUtngD6I3RpJggyMXSg/edit?utm_content=DAGger76quo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+
+
 ## 🤝 Contribuciones
 Si quieres contribuir, sigue estos pasos:
 1. Haz un **fork** del repositorio.
@@ -97,4 +107,3 @@ Si quieres contribuir, sigue estos pasos:
 3. Haz **commit** de tus cambios (**git commit -m 'Añadir nueva funcionalidad'**).
 4. Sube los cambios a tu fork (**git push origin feature-nueva-funcionalidad**).
 5. Abre un **Pull Request**.
-
