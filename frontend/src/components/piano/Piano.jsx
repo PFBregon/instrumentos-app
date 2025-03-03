@@ -14,9 +14,6 @@ const Piano = () => {
     const {handleNotePlay} = usePiano();
     const [teclasPiano, setTeclasPiano] = useState([]);
 
-    const teclasBlancas = ["A", "S", "D", "F", "J", "K", "L", "Ñ"];
-    const teclasNegras = ["W", "E", "T", "Y", "U"];
-
     async function getSonidos() {
       const respuesta = await fetch('http://localhost:8080/piano/notas', {
         method: 'GET',
@@ -35,77 +32,74 @@ const Piano = () => {
     const [teclasActivas, setTeclasActivas] = useState({});
 
     useEffect(() => {
-      const cargar = async () => {
-          const data = await getSonidos();
-          setTeclasPiano(data);
+      const cargarSonidos = async () => {
+          try {
+              const respuesta = await fetch('http://localhost:8080/piano/notas', {
+                  method: 'GET',
+                  headers: { 'Accept': 'application/json' },
+              });
+              if (!respuesta.ok) throw new Error('Error al conectar con el backend');
+              const data = await respuesta.json();
+              setTeclasPiano(data);
+          } catch (error) {
+              console.error(error);
+          }
       };
-      cargar();
-    }, []);
+      cargarSonidos();
+  }, []);
 
-    const tocarTecla = (event) => {
-        const tecla = event.key.toUpperCase();
-       const nota= teclasPiano.find((tecla) => tecla.tecla === event.key.toUpperCase());
-        if (nota) {
-            sintetizador.triggerAttackRelease(nota.nombre, "8n");
-            setTeclasActivas((prev) => ({ ...prev, [tecla]: true }));
-            handleNotePlay(nota);
-        }
-    };
+  const tocarTecla = (event) => {
+      const teclaPresionada = event.key.toUpperCase();
+      const notaEncontrada = teclasPiano.find((nota) => nota.tecla === teclaPresionada);
 
-    const soltarTecla = (event) => {
-        const tecla = event.key.toUpperCase();
-        setTeclasActivas((prev) => ({ ...prev, [tecla]: false }));
-    };
+      if (notaEncontrada) {
+          sintetizador.triggerAttackRelease(notaEncontrada.nombre, "8n");
+          setTeclasActivas((prev) => ({ ...prev, [teclaPresionada]: true }));
+          handleNotePlay(notaEncontrada);
+      }
+  };
 
-    useEffect(() => {
-        window.addEventListener("keydown", tocarTecla);
-        window.addEventListener("keyup", soltarTecla);
-        return () => {
-            window.removeEventListener("keydown", tocarTecla);
-            window.removeEventListener("keyup", soltarTecla);
-        };
-    }, [teclasPiano]);
+  const soltarTecla = (event) => {
+      const teclaLiberada = event.key.toUpperCase();
+      setTeclasActivas((prev) => ({ ...prev, [teclaLiberada]: false }));
+  };
 
-  
-    return (
+  useEffect(() => {
+      window.addEventListener("keydown", tocarTecla);
+      window.addEventListener("keyup", soltarTecla);
+      return () => {
+          window.removeEventListener("keydown", tocarTecla);
+          window.removeEventListener("keyup", soltarTecla);
+      };
+  }, [teclasPiano]);
+
+  return (
       <main className="flex flex-col items-center justify-center h-screen bg-black-opacity">
-        <div className="w-[775px] h-[605px] justify-self-center mt-10 rounded-2xl bg-gray-4 shadow-black shadow-2xl">
-          
-          <div className="w-full h-[181px] bg-gray-4/75 shadow-black shadow-xl rounded-2xl">
-           <Grabacion/>
-          </div>
+          <div className="w-[775px] h-[605px] justify-self-center mt-10 rounded-2xl bg-gray-4 shadow-black shadow-2xl">
+              <div className="w-full h-[181px] bg-gray-4/75 shadow-black shadow-xl rounded-2xl">
+                  <Grabacion />
+              </div>
 
-          <div className="flex flex-col items-center p-4 w-full">
-
-            <div className="relative flex  rounded-2xl p-2 bg-black h-[310px]">
-              {teclasBlancas.map((key, index) => (
-                <div
-                  key={key}
-                  className={`tecla-blanca 
-                    ${teclasActivas[key] ? 'activada' : ''} 
-                    ${index === 0 ? 'first' : ''}  {/* Clase para la primera tecla */}
-                    ${index === teclasBlancas.length - 1 ? 'last' : ''}  {/* Clase para la última tecla */}
-                  `}
-                >
-                  {key}
-                </div>
-              ))}
-              
-              {teclasNegras.map((key) => (
-                <div
-                  key={key}
-                  className={`tecla-negra 
-                    ${teclasActivas[key] ? 'activada' : ''} ${posicionesNegras[key]} `}  
-                >
-                  {key}
-                </div>
-              ))}
-            </div>
-            <p className="mt-2 text-sm text-gray-400">Usa las teclas A, W, S, E, D, F, T, J, Y, K, U, L, Ñ para tocar el piano</p>
+              <div className="flex flex-col items-center p-4 w-full">
+                  <div className="relative flex rounded-2xl p-2 bg-black h-[310px]">
+                      {teclasPiano.map(({ tecla, nombre }) => (
+                          <div
+                              key={tecla}
+                              className={`tecla ${teclasActivas[tecla] ? 'activada' : ''} 
+                                  ${posicionesNegras[tecla] ? 'tecla-negra ' + posicionesNegras[tecla] : 'tecla-blanca'}
+                              `}
+                          >
+                              {tecla}
+                          </div>
+                      ))}
+                  </div>
+                  <p className="mt-2 text-sm text-gray-400">
+                      Usa las teclas A, W, S, E, D, F, T, J, Y, K, U, L, Ñ para tocar el piano
+                  </p>
+              </div>
           </div>
-        </div>
-        </main>
-      );
+      </main>
+  );
 };
 
 export default Piano;

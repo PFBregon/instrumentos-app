@@ -6,7 +6,6 @@ import HomeIcon from "../components/homeicon";
 import Footer from "../components/footer";
 import LinkGrabaciones from "../components/LinkGrabaciones";
 
-
 const Piano = () => {
 
     return (

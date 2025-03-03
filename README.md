@@ -107,4 +107,3 @@ Si quieres contribuir, sigue estos pasos:
 3. Haz **commit** de tus cambios (**git commit -m 'Añadir nueva funcionalidad'**).
 4. Sube los cambios a tu fork (**git push origin feature-nueva-funcionalidad**).
 5. Abre un **Pull Request**.
-
